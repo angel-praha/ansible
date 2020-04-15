@@ -1,0 +1,9 @@
+# Update the food.yml file to add a list of Vegetables - Carrot, Tomato, Cucumber
+Fruits:
+  - Apple
+  - Banana
+  - Orange
+Vegetable:
+  - carrot
+  - Tomato
+  - Cucumber
