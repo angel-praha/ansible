@@ -1,0 +1,11 @@
+
+-
+  name: Add DNS server to resolv.conf
+  hosts: all
+  tasks:
+    -
+      lineinfile:
+        path: /etc/hosts
+        line: '192.168.0.117 ansible_slave.angel.com ansible_slave'
+              '192.168.0.116 ansible.angel.com ansible'
+              '192.168.0.115 jenkins.angel.com jenkins'
