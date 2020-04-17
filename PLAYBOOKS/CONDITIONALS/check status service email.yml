@@ -10,3 +10,7 @@
     -
       name: Print output
       debug: var=command_output.stdout_lines
+    -
+      mail:
+        to: angrojrod@hotmail.com
+        subject: alert
