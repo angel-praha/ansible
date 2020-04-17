@@ -1,0 +1,12 @@
+-
+  name: Check status apache and print it
+  hosts: localhost
+  tasks:
+    -
+      name: Get status apache
+      command: systemctl status httpd
+      ignore_errors: yes
+      register: command_output
+    -
+      name: Print output
+      debug: var=command_output.stdout_lines

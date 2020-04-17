@@ -1,0 +1,7 @@
+-
+ name: entry
+ hosts: localhost
+ tasks:
+  -
+    name: list files
+    shell: ls -la /etc > /home/ansible/plays/exit.txt

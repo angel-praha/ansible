@@ -1,0 +1,11 @@
+-
+  name: example
+  hosts: localhost
+  tasks:
+    -
+      name: Get server hostname
+      command: hostname
+      register: command_output
+    -
+      name: Print output
+      debug: var=command_output.stdout
