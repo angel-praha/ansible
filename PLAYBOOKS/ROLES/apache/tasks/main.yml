@@ -1,0 +1,28 @@
+#file main.yml to be put under /rolename/tasks
+#tasks for role common
+---
+-
+  name: install apache
+  yum:
+    name=httpd
+    state=latest
+
+-
+  name: create sites directory
+  file: path={{item}} state=directory
+  with_items: "{{apache_dirs}}"
+
+-
+  name: copy and index.html
+  template: src=index.html.j2 dest={{apache_docroot}}/index.html
+
+-
+  name: copy httpd conf
+  template: scr=httpd.conf-{{ansible_os_family}}.j2 dest={{apache_config}}
+  notify: restart_apache
+-
+  name: start apache
+  service:
+    name=httpd
+    state=started
+    enabled=yes

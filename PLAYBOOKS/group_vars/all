@@ -1,0 +1,11 @@
+---
+#variables here are applicable to all host groups
+
+httpd_port: 80
+ntpserver: 192.168.0.116
+apache_test_message: Forza Atleti -
+apache_max_keep_alive_requests: 115
+apache_docroot: /var/www/html
+apache_config: /etc/httpd/conf/httpd.conf
+sites_available: /etc/httpd/conf/sites-sites_available
+sites_enabled: /etc/httpd/conf/sites_enabled

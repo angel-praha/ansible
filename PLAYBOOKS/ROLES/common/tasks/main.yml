@@ -1,0 +1,11 @@
+#file main.yml to be put under /rolename/tasks
+#tasks for role common
+---
+-
+  name: install epel repo
+  yum:
+    name=epel-release
+    state=present
+    
+- include : selinux.yml
+- include: ntp.yml
