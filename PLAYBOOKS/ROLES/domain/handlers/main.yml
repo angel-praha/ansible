@@ -1,0 +1,6 @@
+---
+  -
+    name: restart host
+    service:
+      name=systemctl 
+      state=restarted

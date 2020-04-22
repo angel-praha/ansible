@@ -1,0 +1,46 @@
+#Examples of using lineinfile module
+
+#it will create new file and it will add the line to file. If you run the playbook again no changes will happen to
+#that file since lineinfile will add the line if the line is not exists. If the line is already existed then it won’t add that line again.
+-
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    -
+     name: Create new file and add a line
+     lineinfile:
+      path: /home/ansible/plays/example.doc
+      line: decoding devops is easy
+      state: present
+      create: yes
+
+#Regexp is used to modify the particular line in the file. Here we mentioned in the regexp parameter as ‘^devops’.
+#that means the line started with docker has to modify with the line ‘hello devops’ in the file. we should mention backrefs as yes.
+#Backrefs yes will replace the line with ‘hello devops’ only if it is find regexp line(^docker) in file.
+#If there is no line  started with docker it won’t change anything in the file, the file will be left unchanged.
+
+
+    -
+     name: Regexp example, change line starting decoding with Atleti
+     lineinfile:
+        path: ./example.doc
+        regexp: '^decoding'
+        line: Atleti
+        state: present
+        backrefs: yes
+
+    -
+      name: Add a line after/before a particular line
+      lineinfile:
+        path: ./example.doc
+        insertafter: '^Atleti'
+        line: 'This is  anew line'
+
+    -
+      name: Remove a line using Ansible regexp
+      lineinfile:
+        path: ./example.doc
+        regexp: '^Atleti'
+        state: absent
+
+  

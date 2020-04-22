@@ -1,0 +1,26 @@
+- name: add a list of hosts to /etc/hosts
+  hosts: ansible
+  become: yes
+  tasks:
+    - name: modify /etc/hosts
+      lineinfile:
+       dest: /etc/hosts
+       regexp: "^{{ item['ip'] }}.*$"
+       line: "{{ item['ip'] }} {{item['names']| join(' ')}}.angel.com {{ item['names']| join(' ') }}"
+       state: present
+      with_items:
+       - ip: 192.168.0.116
+         names:
+           - ansible
+       - ip: 192.168.0.115
+         names:
+           - jenkins
+       - ip: 192.168.0.117
+         names:
+           - slave
+       - ip: 192.168.0.105
+         names:
+           - docker
+    -
+     name: restart host
+     shell: sudo shutdown -r now

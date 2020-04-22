@@ -1,0 +1,25 @@
+#file main.yml to be put under /rolename/tasks
+#tasks for role common
+-
+  name: Add domain in resolv.conf
+  hosts: all
+  tasks:
+    - lineinfile:
+      path: /etc/hosts
+      line: 'domain angel.com'
+
+-
+  name: Add domain in /etc/sysconfig/network
+  hosts: all
+  tasks:
+    - lineinfile:
+      path: /etc/sysconfig/network
+      line: 'DOMAINNAME=angel.com'
+
+-
+  name: Add entry in kernel
+  hosts: all
+  tasks:
+    -lineinfile:
+      path: /etc/sysctl.conf
+      line: 'kernel.domainname = angel.com'

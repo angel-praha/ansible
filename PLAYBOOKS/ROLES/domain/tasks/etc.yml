@@ -1,0 +1,7 @@
+#Change /etc/hosts file
+-
+  name: Change /etc/hosts
+  hosts: all
+  become: yes
+  lineinfile:
+    dest: /etc/hosts
